@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="EMAIL"
-        android:inputType="textEmailSubject"
+        android:inputType="text"
         />
 
     <Space
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="SENHA"
-        android:inputType="numberPassword"
+        android:inputType="textPassword"
         />
 
     <Space
