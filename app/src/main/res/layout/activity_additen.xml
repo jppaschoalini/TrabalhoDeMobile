@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".additen"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:layout_margin="5sp"
+        android:layout_width="110dp"
+        android:layout_height="75dp"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:text="VOLTAR"
+        />
+
+    <TextView
+        android:layout_margin="5sp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:textAlignment="center"
+        android:text="ADICIONAR ITEM"
+        android:textSize="30dp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_margin="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:text="nome"
+        />
+
+    <EditText
+        android:layout_margin="5sp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        />
+
+    <TextView
+        android:layout_margin="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:text="quantidade"
+        />
+
+    <EditText
+        android:layout_margin="5sp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        />
+
+    <TextView
+        android:layout_margin="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:text="unidade"
+        />
+
+    <Spinner
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_margin="5sp" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        />
+
+    <TextView
+        android:layout_margin="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="20dp"
+        android:text="categoria"
+        />
+
+    <Spinner
+        android:layout_margin="5sp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        />
+
+    <Button
+        android:layout_margin="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:text="ADICIONAR"
+        />
+
+
+</LinearLayout>
