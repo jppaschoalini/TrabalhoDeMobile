@@ -2,7 +2,7 @@ package com.example.trabalhodemobile
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Telephony.Mms.Intents
+import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.trabalhodemobile.databinding.ActivityMain2Binding
-import com.example.trabalhodemobile.databinding.ActivityMainBinding
+import java.util.regex.Pattern
 
 class CriarConta : AppCompatActivity() {
 
@@ -32,6 +32,9 @@ class CriarConta : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
+
         //adquire os valores dos seu respectivos campos
         val nomeInserido: EditText = findViewById(R.id.NOME)
         val emailInserido: EditText = findViewById(R.id.EMAIL)
@@ -48,11 +51,14 @@ class CriarConta : AppCompatActivity() {
             var confirmacao = confirmar.text.toString()
 
 
-            //verifica se os espacos estao vazios e confirma se o usuario colocou a mesma senha
-            if (nomeInserido.text.toString().isEmpty() || emailInserido.text.toString().isEmpty() ||
+            //verifica se os espacos estao vazios se o email esta na estrutura correta
+            // e confirma se o usuario colocou a mesma senha
+            if (nomeInserido.text.toString().isEmpty() || emailInserido.text.toString().isEmpty() || emailValido(email) == false ||
                 senhaInserido.text.toString().isEmpty() || confirmar.text.toString().isEmpty() || confirmacao != senha) {
 
-                Toast.makeText(this, "campo nao preenchido/senhas diferentes", Toast.LENGTH_SHORT).show()
+
+
+                Toast.makeText(this, "campo nao preenchido ou senhas diferentes ou email invalido", Toast.LENGTH_SHORT).show()
 
             }else{
 
@@ -65,9 +71,18 @@ class CriarConta : AppCompatActivity() {
                 //intent.putExtra("senha", senha)
                 startActivity(intent)
             }
+
+
+
+
+
         }
 
-
+    // valida se o email colocado esta na estrutura correta
     }
+    private fun emailValido(email: String): Boolean{
 
+        val patterns = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[A-Za-z]{2,6}\$"
+        return email.matches(Regex(patterns))
+    }
 }
