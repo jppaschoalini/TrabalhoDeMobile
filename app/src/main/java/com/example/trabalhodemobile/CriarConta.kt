@@ -1,6 +1,8 @@
 package com.example.trabalhodemobile
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.EditText
@@ -13,6 +15,10 @@ import com.example.trabalhodemobile.databinding.ActivityMain2Binding
 import java.util.regex.Pattern
 
 class CriarConta : AppCompatActivity() {
+
+    //---------------------------------------
+    private lateinit var sharedPreferences: SharedPreferences
+    private val PREFS_NAME = "LoginPrefs"
 
 
     //linkando o xml a esse kotlin
@@ -28,10 +34,10 @@ class CriarConta : AppCompatActivity() {
             insets
         }
 
+        sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
 
 
@@ -62,13 +68,17 @@ class CriarConta : AppCompatActivity() {
 
             }else{
 
+                val editor = sharedPreferences.edit()
+                editor.putString("nome", nome)
+                //editor.putString("email", email)
+                editor.putString("${email}_senha", senha) // Chave única
+                editor.apply()  // Salvar as mudanças
+
 
 
                 //passa as informacoes dessa tela para outra tela expecificada
                 val intent = Intent(this, Login::class.java)
-                //intent.putExtra("nome", nome)
-                //intent.putExtra("email", email)
-                //intent.putExtra("senha", senha)
+
                 startActivity(intent)
             }
 
