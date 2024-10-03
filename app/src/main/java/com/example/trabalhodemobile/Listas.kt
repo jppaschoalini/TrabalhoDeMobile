@@ -15,11 +15,10 @@ import com.example.trabalhodemobile.databinding.ActivityListasBinding
 
 class Listas : AppCompatActivity() {
 
-    private lateinit var sharedPreferences: SharedPreferences
-    private val PREFS_NAME = "ListasPrefs"
-    lateinit var recyclerView: RecyclerView
-    lateinit var adapter:Lista_Adapter
-    private val listaBD = DBlistas.instance
+
+    //lateinit var recyclerView: RecyclerView
+    //lateinit var adapter:Lista_Adapter
+    //private val listaBD = DBlistas.instance
 
     private lateinit var binding: ActivityListasBinding
 
@@ -33,17 +32,16 @@ class Listas : AppCompatActivity() {
             insets
         }
 
-        sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
         binding = ActivityListasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        recyclerView.adapter = adapter
+       // recyclerView.adapter = adapter
 
         val layoutManager = LinearLayoutManager(this)
-        val listasList = listaBD.getListas()
+        //val listasList = listaBD.getListas()
 
-        binding.RECYCLERVIEW.adapter = adapter
+        //binding.RECYCLERVIEW.adapter = adapter
         binding.RECYCLERVIEW.layoutManager = layoutManager
 
         binding.CriarLista.setOnClickListener {
@@ -57,16 +55,16 @@ class Listas : AppCompatActivity() {
         }
     }
 
-    public override fun onResume() {
-        super.onResume()
-       loadLocais()
-    }
+  // public override fun onResume() {
+        //super.onResume()
+      // loadLocais()
+   // }
 
-    fun loadLocais() {
-        val listasList = listaBD.getListas()
-        adapter.updateList(listasList)
+   // fun loadLocais() {
+        //val listasList = listaBD.getListas()
+        //adapter.updateList(listasList)
 
-    }
+   // }
 
 
 }

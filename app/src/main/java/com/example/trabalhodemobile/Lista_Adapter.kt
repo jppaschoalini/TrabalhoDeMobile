@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trabalhodemobile.databinding.ActivityListasBinding
 import com.example.trabalhodemobile.databinding.ItenLayoutBinding
 
-class Lista_Adapter(private var ListaCompras: List<estrutura_lista>, private val onClick: (estrutura_lista) -> Unit) :
+class Lista_Adapter(private var ListaCompras: List<estrutura_lista>) :
     RecyclerView.Adapter<Lista_Adapter.listaViewHolder>() {
 
     class listaViewHolder(val binding: ItenLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -31,9 +31,9 @@ class Lista_Adapter(private var ListaCompras: List<estrutura_lista>, private val
 
     override fun getItemCount(): Int = ListaCompras.size
 
-    fun updateList(novaLista: List<estrutura_lista>) {
-        ListaCompras = novaLista
-        notifyDataSetChanged()
-    }
+    //fun updateList(novaLista: List<estrutura_lista>) {
+       // ListaCompras = novaLista
+       // notifyDataSetChanged()
+    //}
 
 }

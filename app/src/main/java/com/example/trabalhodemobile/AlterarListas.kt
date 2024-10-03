@@ -25,8 +25,6 @@ class AlterarListas : AppCompatActivity() {
 
     //linkando o xml a esse kotlin
     private lateinit var binding: ActivityItensBinding
-    private lateinit var sharedPreferences: SharedPreferences
-    private val PREFS_NAME = "ListaPrefs"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
