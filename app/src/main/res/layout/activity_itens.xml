@@ -36,7 +36,7 @@
         />
 
     <EditText
-        android:id="@+id/nomelocal"
+        android:id="@+id/editListaNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -61,11 +61,12 @@
         android:id="@+id/imagem"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@drawable/template"
+        android:scaleType="centerCrop"
+        android:background="@drawable/template"
         />
 
     <Button
-        android:id="@+id/adicionar"
+        android:id="@+id/adicionarImagem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="adicionar imagem"

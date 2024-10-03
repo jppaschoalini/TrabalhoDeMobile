@@ -1,27 +1,32 @@
 package com.example.trabalhodemobile
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.trabalhodemobile.DB.DBlistas
 import com.example.trabalhodemobile.databinding.ActivityItensBinding
 
 class AlterarListas : AppCompatActivity() {
-
-    val PICK_IMAGE_REQUEST = 1
-    lateinit var foto : ImageView
-    var imageUri: Uri? = null
 
 
 
     //linkando o xml a esse kotlin
     private lateinit var binding: ActivityItensBinding
+    private lateinit var sharedPreferences: SharedPreferences
+    private val PREFS_NAME = "ListaPrefs"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,29 +39,44 @@ class AlterarListas : AppCompatActivity() {
             insets
         }
 
-        val lugarDeCompra : EditText = findViewById(R.id.nomelocal)
-        val foto : ImageView = findViewById(R.id.imagem)
 
         binding = ActivityItensBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val listaBD = DBlistas.instance
 
-        binding.adicionar.setOnClickListener{
-            openGallery()
+        val imagemSelecionada: ImageView = findViewById(R.id.imagem)
+
+
+        binding.adicionarImagem.setOnClickListener {
+            selectImage()
+        }
+
+        binding.adicionarLocal.setOnClickListener {
+
+            val titulo = binding.editListaNome.text.toString()
+            val imagem = imagemSelecionada.toString()
+
+            if (titulo.isEmpty()) {
+
+                Toast.makeText(this, "Por favor, insira um nome.", Toast.LENGTH_SHORT).show()
+
+            } else {
+
+                //imagem = selectedImageUri?.toString() ?: "android.resource://$packageName/drawable/template"
+
+                val lista = estrutura_lista(titulo)
+                listaBD.adLista(lista)
+                finish()
+            }
         }
 
     }
 
-    private fun openGallery() {
+
+    private fun selectImage() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        startActivity(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            imageUri = data.data
-            foto.setImageURI(imageUri)
-        }
-    }
 
 }
