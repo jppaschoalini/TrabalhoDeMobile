@@ -3,25 +3,17 @@ package com.example.trabalhodemobile
 import android.graphics.Bitmap
 
 class estrutura_lista (
-    var nome: String,
-    //var imagem: String
+    private var nome: String) {
 
-    ){
+    private var produtos: MutableList<estrutura_iten> = mutableListOf()
 
-    //var produtos: MutableList<estrutura_iten> = mutableListOf()
-
-    fun getTitulo(): String{
+    fun getNome(): String {
         return nome
-
     }
 
-   // fun getImagem(): String{
-        //return imagem
-    //}
-
-    //fun getProdutos(): MutableList<estrutura_iten>{
-       //return produtos
-    //}
+    fun getListaProdutos(): MutableList<estrutura_iten> {
+        return produtos;
+    }
 
 
 }

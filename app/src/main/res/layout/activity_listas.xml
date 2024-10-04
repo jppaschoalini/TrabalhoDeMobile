@@ -46,7 +46,8 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:importantForAccessibility="no"
+        android:clickable="true"
+        android:focusable="true"
         android:id="@+id/CriarLista"
         android:src="@drawable/baseline_add_24"
         />

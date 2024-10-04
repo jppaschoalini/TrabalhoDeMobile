@@ -3,13 +3,8 @@ package com.example.trabalhodemobile
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -25,7 +20,7 @@ class AlterarListas : AppCompatActivity() {
 
     //linkando o xml a esse kotlin
     private lateinit var binding: ActivityItensBinding
-
+    val listaBD = DBlistas.instance
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,11 +33,10 @@ class AlterarListas : AppCompatActivity() {
         }
 
 
-        binding = ActivityItensBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        val listaBD = DBlistas.instance
+
 
         val imagemSelecionada: ImageView = findViewById(R.id.imagem)
+
 
 
         binding.adicionarImagem.setOnClickListener {
@@ -51,10 +45,14 @@ class AlterarListas : AppCompatActivity() {
 
         binding.adicionarLocal.setOnClickListener {
 
-            val titulo = binding.editListaNome.text.toString()
+            val nome = binding.editListaNome.text.toString()
             val imagem = imagemSelecionada.toString()
 
-            if (titulo.isEmpty()) {
+            binding = ActivityItensBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+
+
+            if (nome.isEmpty()) {
 
                 Toast.makeText(this, "Por favor, insira um nome.", Toast.LENGTH_SHORT).show()
 
@@ -62,7 +60,7 @@ class AlterarListas : AppCompatActivity() {
 
                 //imagem = selectedImageUri?.toString() ?: "android.resource://$packageName/drawable/template"
 
-                val lista = estrutura_lista(titulo)
+                val lista = estrutura_lista(nome)
                 listaBD.adLista(lista)
                 finish()
             }

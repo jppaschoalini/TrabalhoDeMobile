@@ -7,13 +7,13 @@ class DBlistas {
         var instance: DBlistas = DBlistas()
     }
 
-    private var listaListasDeCompras: MutableList<estrutura_lista> = mutableListOf()
+    private var ListasDeCompras: MutableList<estrutura_lista> = mutableListOf()
 
     fun getListas(): List<estrutura_lista> {
-        return listaListasDeCompras
+        return ListasDeCompras
     }
 
     fun adLista(lista: estrutura_lista) {
-        listaListasDeCompras.add(lista)
+        ListasDeCompras.add(lista)
     }
 }

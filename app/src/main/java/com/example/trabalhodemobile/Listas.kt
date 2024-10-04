@@ -16,11 +16,10 @@ import com.example.trabalhodemobile.databinding.ActivityListasBinding
 class Listas : AppCompatActivity() {
 
 
-    //lateinit var recyclerView: RecyclerView
-    //lateinit var adapter:Lista_Adapter
-    //private val listaBD = DBlistas.instance
-
     private lateinit var binding: ActivityListasBinding
+    private lateinit var adapter: Lista_Adapter
+    private val listaBD = DBlistas.instance
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,35 +35,42 @@ class Listas : AppCompatActivity() {
         binding = ActivityListasBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       // recyclerView.adapter = adapter
+        val listasList = listaBD.getListas()
 
+        adapter = Lista_Adapter(listasList, ::onListItemClicked)
         val layoutManager = LinearLayoutManager(this)
-        //val listasList = listaBD.getListas()
 
-        //binding.RECYCLERVIEW.adapter = adapter
+        binding.RECYCLERVIEW.adapter = adapter
         binding.RECYCLERVIEW.layoutManager = layoutManager
 
         binding.CriarLista.setOnClickListener {
-            val Criarconta = Intent(this, AlterarListas::class.java)
-            startActivity(Criarconta)
+            val intent = Intent(this, AlterarListas::class.java)
+            startActivity(intent)
         }
 
         binding.logout.setOnClickListener{
-            val Telalogin = Intent(this, Login::class.java)
-            startActivity(Telalogin)
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
         }
+
+
     }
 
-  // public override fun onResume() {
-        //super.onResume()
-      // loadLocais()
-   // }
+    fun onListItemClicked(lista:estrutura_lista) {
+        val intent = Intent(this, AlterarListas::class.java)
+        startActivity(intent)
+    }
 
-   // fun loadLocais() {
-        //val listasList = listaBD.getListas()
-        //adapter.updateList(listasList)
+    override fun onResume() {
+        super.onResume()
+        atualizaTela()
+    }
 
-   // }
+    fun atualizaTela() {
+        val listasList = listaBD.getListas()
+        adapter.updateList(listasList)
+    }
+
 
 
 }
